@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+Name: <span id="name"></span><br />
+Phone: <span id="phone"></span><br />
+
+<script>
+    window.onmessage = function(e){
+        e = e || event;
+        var obj_1 = eval ("(" + e.data + ")");
+        document.getElementById("name").innerHTML=obj_1.name;
+        document.getElementById("phone").innerHTML=obj_1.phone;
+    }
+
+</script>
+</body>
+</html>

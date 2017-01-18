@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="utf-8">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/dashboard.css">
+    <title>Dashboard Template for Bootstrap</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/register">登录</a></li>
+                <li><a href="#/login">注册</a></li>
+                <li><a href="#/Profile">退出</a></li>
+                <!--<li><a href="#Help">Help</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search..."    id="autocomplete">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#/me">我的</a></li>
+                <li><a href="#/userDetail">个人信息</a></li>
+                <li><a href="#/usersList">用户列表</a></li>
+                <li><a href="#/Export">忘记密码</a></li>
+            </ul>
+            <!--<ul class="nav nav-sidebar">-->
+            <!--<li><a href="">Nav item</a></li>-->
+            <!--<li><a href="">Nav item again</a></li>-->
+            <!--<li><a href="">One more nav</a></li>-->
+            <!--<li><a href="">Another nav item</a></li>-->
+            <!--<li><a href="">More navigation</a></li>-->
+            <!--</ul>-->
+        </div>
+        <div id='content' class="col-sm-9 col-sm-offset-3 col-md-10 col-sm-offset-2 main "></div>
+    </div>
+</div>
+<!--两种样式-->
+
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--拷贝的css设置-->
+
+<script src="vendor/director/build/director.min.js"></script>
+
+
+<script>
+    //点击时有动态效果的切换,文档就绪事件，用JQ必须加文档就绪事件,并且点击时会加载内容
+    $(function () {
+        var allroutes = function () {
+            var showContentId = $("div#content");
+            showContentId.hide(250);
+            var route = window.location.hash.slice(2) || 'login';
+            var url = './template/' + route + '.html';
+            showContentId.load(url);
+            showContentId.show(250);
+        };
+
+        if (window.location.hash.slice(2).length == 0) {
+            allroutes();
+        }
+
+        //director.js的应用
+        //定义路由，(便于点击时加载网页内容)，，对链接的声明(登录 注册等等)
+        var routers = {
+            '/register': register,
+            '/login': login,
+            '/forget': forget,
+            '/me': me,
+
+//个人信息
+            '/userDetail': userDetail,
+//用户列表
+            '/usersList': usersList,
+
+
+            '/Export': Export,
+        };
+
+
+        //初始化路由
+        var router = Router(routers);
+
+        //新加部分
+        router.configure({
+            on: allroutes
+        });
+
+
+        router.init();
+    });
+
+    // 初始化路由
+    // var router = Router(routers);
+    // router.init();
+    //    });
+
+
+    //点击时利用AJAX加载需要的表单
+    function register() {
+        // $(".main").load("template/register.html");
+    }
+    ;
+    function login() {
+        //$(".main").load("template/login.html");
+    }
+    ;
+    function forget() {
+        //$(".main").load("template/login.html");
+    }
+    ;
+    //左侧导航
+    function me() {
+    }
+    ;
+    function userDetail() {
+    }
+    ;
+//    function usersList() {
+//    }
+//    ;
+    function Export() {
+        document.getElementsByClassName("main")[0]
+                .innerHTML = '<span style="color:green">导航</span>';
+    }
+    ;
+
+
+
+
+    function usersList() {
+        //加载页面，在load的回调里面再去加载json文件
+        $("#content").load("template/usersList.html", function () {
+            //如果load返回的status是success（成功）的话，表示页面加载成功，可以去拿json数据填充表格了
+            $.get("/users", function (data) {
+                //发送请求，去找服务器拿json文件
+                console.log(data)
+
+                //get的回调函数，返回的是responseText，string格式，想遍历得先转换成json对象
+                data = JSON.parse(data);  //这个方法就是把string反序列化成json对象
+                console.log(data)
+                //开始遍历，拿到的每条信息，都组装成字符串，拼接起来，然后append给tbody
+                for (x in data.users) {
+                    var res = "";
+                    res += "<tr><td>" + data.users[x].id + "</td>";
+                    res += "<td>" + data.users[x].nicName + "</td>";
+                    res += "<td>" + data.users[x].realName + "</td>";
+                    res += "<td>" + data.users[x].loginName + "</td>";
+                    res += "<td>" + data.users[x].gender + "</td>";
+                    res += "<td>" + data.users[x].address + "</td>";
+                    res += "<td>" + data.users[x].age + "</td>";
+                    res += "<td>" + data.users[x].birthday + "</td>";
+                    res += "<td>" + data.users[x].createTime + "</td>";
+                    res += "<td>" + data.users[x].phone + "</td>";
+                    res += "<td>" + data.users[x].entryTime + "</td>";
+                    res += '<td><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#myModal"></span>';
+                    res += '<span class="glyphicon glyphicon-remove" data-toggle="modal" data-target="#myModal1"></span></td></tr>';
+                    $("#users-List tbody").append(res);
+                }
+            });
+            if (status == "success") {
+            }
+        });
+    };
+
+
+
+
+
+    // 提示搜索的内容
+    $(document).ready(function(){
+        //定义搜索的数组
+        var tags = ["eclipse","node plus","hbuilder","webstore"];
+        $("#autocomplete").autocomplete({
+            source:function(request,response){
+                var matcher = new RegExp("^"+ $.ui.autocomplete.escapeRegex(request.term),"i");
+                response($.grep(tags, function (item) {
+                    return matcher.test(item);
+                }));
+            }
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<iframe id="otherdomain" src="http://127.0.0.1:3009/use_window_name.html" style="display:none"
+        onload="getData()">
+</iframe>
+<script>
+    function getData() {
+        var iframe = document.getElementById('otherdomain');
+        iframe.src = 'winname_res.html';
+
+        setTimeout(function () {
+            window.location = 'winname_res.html';
+            window.name = iframe.contentWindow.name;
+        }, 1000);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="vendor/jquery-ui/themes/base/jquery-ui.min.css">
+    <style>
+        #draggable1 {
+            width: 100px;
+            height: 100px;
+            color: white;
+            background: red;
+        }
+
+        #draggable, #sortable {
+            border: solid 1px #000000;
+            padding: 5px 5px;
+            width: 80px;
+            list-style: none;
+            position: static;
+        }
+
+        #draggable li, #sortable li {
+            border: solid 1px #2f2;
+            padding: 5px 5px;
+            margin: 5px;
+            background-color: red;
+
+        }
+
+        #draggable_1, #result_1 {
+            border: solid 1px #000000;
+            padding: 5px 5px;
+            width: 100px;
+            list-style: none;
+            position: static;
+        }
+
+        #draggable_1 li, #result_1 li {
+            border: solid 1px #D0D0D0;
+            padding: 5px 5px;
+            margin: 5px;
+            background-color: #E2E2E2;
+        }
+
+        #droppable {
+            border: solid 1px #000000;
+            width: 100px;
+            height: 100px;
+        }
+
+        img {
+            width: 100px;
+            height: 50px;
+        }
+
+        #ul-select .ui-selecting {
+            background: #f00;
+        }
+
+        #ul-select .ui-selected {
+            background: #999;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<!--draggable() 用拖动方式移动元素-->
+<div id="draggable1">可以拖拽
+    <img id="img_three"
+         src="images/01.jpg"
+         height="80"
+         width="90">
+</div>
+<hr>
+
+<!--draggable() 用拖动方式移动元素,将东西拖拽到框里面-->
+<table style="padding:5px 20px;">
+    <tr>
+        <td style="padding: 5px 20px;
+    vertical-align:top;">
+            <ul id="draggable">
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+            </ul>
+        </td>
+        <td style="padding:5px 20px;
+    vertical-align: top;">
+            <ul id="sortable">
+                <li class="listTitle">sortList</li>
+            </ul>
+        </td>
+        <td style="padding:5px 20px;
+    vertical-align: top;">
+            <div id="result"></div>
+        </td>
+    </tr>
+</table>
+<hr>
+<!-droppable()可放置元素拖动其他元素-->
+
+<table style="padding: 5px 20px;">
+    <tr>
+        <td style="padding: 5px 20px;vertical-align: top;">
+            <ul id="draggable_1">
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+                <li>item4</li>
+                <li>item5</li>
+                <li>item6</li>
+                <li>item7</li>
+                <li>item8</li>
+                <li>item9</li>
+            </ul>
+        </td>
+        <td style="padding: 5px 20px;vertical-align: top;">
+            <div id="droppable"><p>垃圾箱</p></div>
+        </td>
+        <td style="padding: 5px 20px;vertical-align: top;">
+            <ul id="result_1">
+                <li class="listTitle">垃圾列表</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<!--调整元素大小-->
+<dl>
+    <dt>面包</dt>
+    <dd><img class="resizable" src="images/r.jpg"></dd>
+    <dt>主菜</dt>
+    <dd><img class="resizable" src="images/rt.jpg"></dd>
+    <dt>点心</dt>
+    <dd><img class="resizable" src="images/sw.jpg"></dd>
+</dl>
+
+
+<!--选择元素-->
+<ul id="ul-select">
+    <li>第一波</li>
+    <li>第二波</li>
+    <li>第三波</li>
+    <li>第四波</li>
+    <li>第五波</li>
+</ul>
+
+<!--排序元素-->
+<ul id="ul-sortable">
+    <li>第一波</li>
+    <li>第二波</li>
+    <li>第三波</li>
+    <li>第四波</li>
+    <li>第五波</li>
+</ul>
+
+<!--折叠显示-->
+<div id="accordion"
+     class="ui-accordion ui-widget ui-helper-reset"
+     role="tablist">
+    <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab"
+        id="ui-accordion-accordion-header-0" aria-controls="ui-accordion-accordion-panel-0" aria-selected="false"
+        aria-expanded="false" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>红楼梦
+    </h3>
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom"
+         id="ui-accordion-accordion-panel-0" aria-labelledby="ui-accordion-accordion-header-0" role="tabpanel"
+         aria-hidden="true" style="display: none; height: 129px;">
+        <ul>
+            <li>第一回 甄士隐梦幻识通灵　贾雨村风尘怀闺秀</li>
+            <li>第二回 贾夫人仙逝扬州城　冷子兴演说荣国府</li>
+            <li>第三回 贾雨村夤缘复旧职　林黛玉抛父进京都</li>
+            <li>第四回 薄命女偏逢薄命郎　葫芦僧乱判葫芦案</li>
+            <li>第五回 游幻境指迷十二钗　饮仙醪曲演红楼梦</li>
+        </ul>
+    </div>
+    <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab"
+        id="ui-accordion-accordion-header-1" aria-controls="ui-accordion-accordion-panel-1" aria-selected="false"
+        aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>三国演义
+    </h3>
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom"
+         id="ui-accordion-accordion-panel-1" aria-labelledby="ui-accordion-accordion-header-1" role="tabpanel"
+         aria-hidden="true" style="display: none; height: 129px;">
+        <ul>
+            <li>第一回　 宴桃园豪杰三结义　斩黄巾英雄首立功</li>
+            <li>第一回 　宴桃园豪杰三结义　斩黄巾英雄首立功</li>
+            <li>第三回 　议温明董卓叱丁原　 馈金珠李肃说吕布</li>
+            <li>第四回 　废汉帝陈留践位　谋董贼孟德献刀</li>
+            <li>第五回 　发矫诏诸镇应曹公　破关兵三英战吕布</li>
+        </ul>
+    </div>
+    <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all ui-accordion-icons" role="tab"
+        id="ui-accordion-accordion-header-2" aria-controls="ui-accordion-accordion-panel-2" aria-selected="false"
+        aria-expanded="false" tabindex="-1"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>水浒
+    </h3>
+    <div class="ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom"
+         id="ui-accordion-accordion-panel-2" aria-labelledby="ui-accordion-accordion-header-2" role="tabpanel"
+         aria-hidden="true" style="display: none; height: 129px;">
+        <ul>
+            <li>楔　子 　张天师祈禳瘟疫 　洪太尉误走妖魔</li>
+            <li>第一回 　王教头私走延安府　九纹龙大闹史家村</li>
+            <li>第二回 　史大郎夜走华阴县　 鲁提辖拳打镇关西</li>
+            <li>第三回 　赵员外重修文殊院　鲁智深大闹五台山</li>
+        </ul>
+    </div>
+</div>
+
+
+<!--对话框-->
+<button id="opener">注册</button>
+<div id="dialog" title="注册">
+    <form>
+        <p><label>账号：</label>
+            <input type="text"
+                   name="username"></p>
+        <p><label>密码：</label>
+            <input type="password"
+                   name="password">
+            <input type="submit" value="注册"></p>
+    </form>
+</div>
+
+
+<!--进度条-->
+<div id="progressbar"></div>
+
+<!--slide滑块   拖动滑块时，字变大-->
+<div id="slider"></div>
+<div id="slider_content">
+    <p>miss</p>
+    <ul>
+        <li>楔　子 　张天师祈禳瘟疫 　洪太尉误走妖魔</li>
+        <li>第一回 　王教头私走延安府　九纹龙大闹史家村</li>
+        <li>第二回 　史大郎夜走华阴县　 鲁提辖拳打镇关西</li>
+        <li>第三回 　赵员外重修文殊院　鲁智深大闹五台山</li>
+    </ul>
+</div>
+
+<!--显示标签菜单-->
+<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+    <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+        <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0"
+            aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="true"><a href="#tabs-1"
+                                                                                     class="ui-tabs-anchor"
+                                                                                     role="presentation" tabindex="-1"
+                                                                                     id="ui-id-1">红楼梦</a></li>
+        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-2"
+            aria-labelledby="ui-id-2" aria-selected="false"><a href="#tabs-2" class="ui-tabs-anchor" role="presentation"
+                                                               tabindex="-1" id="ui-id-2">三国演义</a></li>
+        <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-3"
+            aria-labelledby="ui-id-3" aria-selected="false"><a href="#tabs-3" class="ui-tabs-anchor" role="presentation"
+                                                               tabindex="-1" id="ui-id-3">水浒</a></li>
+    </ul>
+    <div id="tabs-1" aria-labelledby="ui-id-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
+         aria-expanded="true" aria-hidden="false" style="display: block;">
+        <ul>
+            <li><a href="#" target="_blank">第一回 甄士隐梦幻识通灵　贾雨村风尘怀闺秀</a></li>
+            <li><a href="#" target="_blank">第二回 贾夫人仙逝扬州城　冷子兴演说荣国府</a></li>
+            <li><a href="#" target="_blank">第三回 贾雨村夤缘复旧职　林黛玉抛父进京都</a></li>
+            <li><a href="#" target="_blank">第四回 薄命女偏逢薄命郎　葫芦僧乱判葫芦案</a></li>
+            <li><a href="#" target="_blank">第五回 游幻境指迷十二钗　饮仙醪曲演红楼梦</a></li>
+            <li><a href="#" target="_blank">第六回 贾宝玉初试云雨情 刘姥姥一进荣国府</a></li>
+            <li><a href="#" target="_blank">第七回 送宫花贾琏戏熙凤 宴宁府宝玉会秦钟</a></li>
+            <li><a href="#" target="_blank">第八回 比通灵金莺微露意 探宝钗黛玉半含酸</a></li>
+            <li><a href="#" target="_blank">第九回 恋风流情友入家塾 起嫌疑顽童闹学堂</a></li>
+            <li><a href="#" target="_blank">第十回 金寡妇贪利权受辱 张太医论病细穷源</a></li>
+        </ul>
+    </div>
+    <div id="tabs-2" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
+         aria-expanded="false" aria-hidden="true" style="display: none;">
+        <ul>
+            <li><a href="#" target="_blank">第一回　宴桃园豪杰三结义　斩黄巾英雄首立功</a></li>
+            <li><a href="#" target="_blank">第二回　张翼德怒鞭督邮　何国舅谋诛宦竖</a></li>
+            <li><a href="#" target="_blank">第三回　议温明董卓叱丁原　馈金珠李肃说吕布</a></li>
+            <li><a href="#" target="_blank">第四回　废汉帝陈留践位　谋董贼孟德献刀</a></li>
+            <li><a href="#" target="_blank">第五回　发矫诏诸镇应曹公　破关兵三英战吕布</a></li>
+            <li><a href="#" target="_blank">第六回　焚金阙董卓行凶　匿玉玺孙坚背约</a></li>
+            <li><a href="#" target="_blank">第七回　袁绍磐河战公孙　孙坚跨江击刘表</a></li>
+            <li><a href="#" target="_blank">第八回　王司徒巧使连环计　董太师大闹凤仪亭</a></li>
+            <li><a href="#" target="_blank">第九回　除暴徒吕布助司徒　犯长安李倔听贾诩</a></li>
+            <li><a href="#" target="_blank">第十回　勤王室马腾举义　报父仇曹操兴师</a></li>
+        </ul>
+    </div>
+    <div id="tabs-3" aria-labelledby="ui-id-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel"
+         aria-expanded="false" aria-hidden="true" style="display: none;">
+        <ul>
+            <li><a href="#" target="_blank">第1回 张天师祈禳瘟疫 洪太尉误走妖魔</a></li>
+            <li><a href="#" target="_blank">第2回 王教头私走延安府 九纹龙大闹史家村</a></li>
+            <li><a href="#" target="_blank">第3回 史大郎夜走华阴县 鲁提辖拳打镇关西</a></li>
+            <li><a href="#" target="_blank">第4回 赵员外重修文殊院 鲁智深大闹五台山</a></li>
+            <li><a href="#" target="_blank">第5回 小霸王醉入销金帐 花和尚大闹桃花村</a></li>
+            <li><a href="#" target="_blank">第6回 九纹龙剪径赤松林 鲁智深火烧瓦罐寺</a></li>
+            <li><a href="#" target="_blank">第7回 花和尚倒拔垂杨柳 豹子头误入白虎堂</a></li>
+            <li><a href="#" target="_blank">第8回 林教头刺配沧州道 鲁智深大闹野猪林</a></li>
+            <li><a href="#" target="_blank">第9回 柴进门招天下客 林冲棒打洪教头</a></li>
+            <li><a href="#" target="_blank">第10回 林教头风雪山神庙 陆虞候火烧草料场</a></li>
+        </ul>
+    </div>
+</div>
+<!--提示搜索的内容-->
+<label for="autocomplete">选择啊</label>
+<input type="text" id="autocomplete">
+
+
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/director/build/director.min.js"></script>
+<script src="javascripts/jQueryUI.js"></script>
+
+
+</body>
+</html>

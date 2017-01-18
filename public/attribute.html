@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/dashboard.css">
+    <style>
+        #bow{
+            border: 2px solid red;
+            background-color: #2b542c;
+            font: 22px "微软雅黑";
+        }
+    .redbox{
+     border: 2px solid #ffff00;
+        color:red;
+ }
+        #one11{
+            color: red;
+        }
+        #two22{  color:green;}
+        #three33{  color: blue;}
+
+
+        #img_animate{
+            background: #2b2;
+            height:40px;
+        }
+
+
+    </style>
+</head>
+<body>
+<!--周日课堂练习1-->
+<div class="hcode" id="bow">
+<p id="content">0号：第一回  甄士隐梦幻识通灵　贾雨村风尘怀闺秀</p>
+<div id="div-1">
+    <p id="one" title="冷子兴演说荣国府">1号：第二回  贾夫人仙逝扬州城　冷子兴演说荣国府</p>
+    <p id="two" title="林黛玉抛父进京都">2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</p>
+    <p id="three" title="葫芦僧乱判葫芦案">3号：第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</p>
+</div>
+</div>
+
+
+<div id="div_2">
+    <p id="one1" title="冷子兴演说荣国府">1号：　冷子兴演说荣国府</p>
+    <p id="two2" title="林黛玉抛父进京都">2号　林黛玉抛父进京都</p>
+    <p id="three3" title="葫芦僧乱判葫芦案">3号：　葫芦僧乱判葫芦案</p>
+</div>
+
+
+<button type="button" onclick="do_attr()">attr</button>
+<button type="button" onclick="do_removeAtter()">删除属性值removeAttr</button>
+
+<button type="button" onclick="do_addClass()">修改class属性值addClass</button>
+
+<button type="button" onclick="do_removeclass()">删除class属性值removeAttr</button>
+
+
+
+
+<div id="div_5">
+    <p id="one_1" title="冷子兴演说荣国府" class="redbox">1号：第二回  贾夫人仙逝扬州城　冷子兴演说荣国府</p>
+    <p id="two_1" title="林黛玉抛父进京都" class="redbox">2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</p>
+    <p id="three_1" title="葫芦僧乱判葫芦案" class="redbox">3号：第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</p>
+</div>
+
+
+<div id="div_7">
+    <p id="one_2" title="冷子兴演说荣国府" >1号：第二回  贾夫人仙逝扬州城　冷子兴演说荣国府</p>
+    <p id="two_2" title="林黛玉抛父进京都" >2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</p>
+</div>
+<button type="button" onclick="do_text()">获取/设置文本text</button>
+<!--<button type="button" id="do_toggleClass()">根据条件设置/删除class属性值addClass</button>-->
+
+
+<div id="div-8">
+<p id="one11">红</p>
+<p id="two22">绿</p>
+<p id="three33">蓝</p>
+    </div>
+<button  type="button" onclick="do_css()">获取元素的style属性值</button>
+
+
+<!--获取元素的显示位置-->
+<div id="div_3" class="hcode">
+    <p id="one_3"  >显示此标签的位置</p>
+    <p id="two_3"  ></p>
+</div>
+<button onclick="do_offset()">获取元素的显示位置offset</button>
+
+
+
+<!--获取元素的高度-->
+<div id="div_4" class="hcode">
+    <p id="one_4">显示此标签的位置</p>
+    <p id="two_4">document高度</p>
+    <p id="three_4">window高度</p>
+</div>
+<button onclick="do_height()">获取元素的高度</button>
+
+<!--获取元素的宽度-->
+<div id="div_15" class="hcode">
+    <p id="one_5">显示此标签的位置</p>
+    <p id="two_5">document高度</p>
+    <p id="three_5">window高度</p>
+</div>
+<button onclick="do_width()">获取元素的宽度</button>
+
+<!--1-09-->
+
+<form >
+<label>请输入账号:</label>
+<input type="text" id="username">
+<label>请输入密码</label>
+<input type="text"  id="pass">
+    </form>
+<button id="focus_submit">登录</button>
+
+
+
+<!--bind事件 点击时将图片隐藏-->
+<p id="img" style="color:red">
+<img src="images/01.jpg">来啊,点我啊
+</p>
+<button id="ctrl_img">bind事件</button>
+
+
+
+<!--click事件 点击元素时发生  点击时，切换图片(最好每张图一样大，才不会有跳动)-->
+<p id="img-click" style="cloor:red;"><img src="images/whatww.jpg"></p>
+<p>点击时会变换</p>
+
+
+<!--//点击时切换图片 轮流/切换响应元素的click事件-->
+<p id="img-toggle"><img src="images/01.jpg" ></p>
+
+
+<!--元素的mouseover/mouseout事件-->
+<img src="images/04.jpg" id="mouse-img-one">
+
+<img src="images/05.jpg" id="mouse-img-two">
+
+
+<img src="images/05.jpg" id="img-hover">
+
+
+<!--点击显示/隐藏元素-->
+<div id="show-hide"
+     style="border:solid 1px #2b2;">
+    <p>我的天哪</p>
+    <img src="images/whatww.jpg"
+    >
+</div>
+<button type="button" id="show">显示</button>
+<button type="button" id="hide">隐藏</button>
+
+
+<!--toggle()切换元素的显示/隐藏状态 点击显示再点击消失-->
+<p style="display: none;" class="p_21"><img src="images/05.jpg"></p>
+<p class="p_21"><img src="images/02.jpg"></p>
+<button id="btu_toggle" type="button">提交</button>
+
+<div id="slidepanle">
+    这个情况有点怪
+    <img src="images/02.jpg">
+</div>
+<button id="but_slideup" type="button">向上</button>
+<button id="but_slidedown" type="button">向下</button>
+
+
+<!--交替显示元素-->
+<div id="slidetogglepanle"><img src="images/02.jpg"></div>
+<button type="button" id="but_slidetoggle">fuck</button>
+
+<!--控制元素的渐入/渐出效果-->
+<img src="images/01.jpg" id="img_one">
+<img src="images/02.jpg" id="img_two">
+<img src="images/03.jpg" id="img_three">
+<button type="button" id="but_fadein">渐入</button>
+<button type="button" id="but_fadeout">渐出</button>
+<button type="button" id="but_fadetoggle">渐入/渐出</button>
+
+<!--自定义动画-->
+<button type="button" id="but_animate">animate</button>
+<img src="images/whatww.jpg"
+     id="img_animate"
+     height="100"
+     width="200"
+>
+
+
+
+
+
+
+
+
+
+
+<script src="javascripts/jquery-1.6.1.js"></script>
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/director/build/director.min.js"></script>
+<script src="javascripts/attribute.js"></script>
+</body>
+</html>

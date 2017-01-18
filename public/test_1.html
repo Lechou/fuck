@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div.wrap{
+            width:400px;
+            border: 1px solid blue;
+            margin: 5px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<!--第一块练习-->
+<div class="hcode">
+
+    <form style="border: 1px solid green;padding:10px">
+        <label>form内，子节点</label><input type="text" value="背景颜色红色">
+        <fieldset>
+            <label>form内fieldset下，孙子节点</label><input type="text" value="背景颜色红色">
+        </fieldset>
+    </form>
+    <label>form外</label><input type="text" value="背景不变色">
+    <fieldset>
+        <label>form外</label><input type="text" value="背景不变色">
+    </fieldset>
+    <p>
+        <br>
+        <button onclick="ancestors()">改变form的子孙input的背景颜色</button>
+        <button onclick="fatherSon()">改变form的子label的边框颜色</button>
+        <button onclick="beforeAfter()">改变label后面的input边框颜色</button>
+        <button onclick="brother()">改变以form为兄弟的label边框颜色</button>
+    </p>
+</div>
+
+
+<!--第二块练习-->
+
+<div>这是div标签中没有定义id属性，不变色</div>
+
+<div id="div_test"
+     class="class1">这是div标签中没有定义id属性，不变色
+</div>
+
+<p id="p_test1"
+   class="class2">这个p标签中没有定义id属性，变红色</p>
+
+<p id="p_test2"
+   class="class3">这个p标签中有定义id属性，变红色</p>
+
+<button
+        onclick="getId()">获取拥有指定属性元素(p标签id属性)
+</button>
+<br/>
+<button
+        onclick="getDiv_test()">获取拥有指定属性元素且设定值一致的元素(div标签id=div_test)
+</button>
+<br/>
+<button
+        onclick="getDiv_test2()">获取拥有指定属性元素且设定值不一致的元素(p标签id=p_test2)
+</button>
+<br/>
+<button
+        onclick="getNoP()">获取拥有指定属性元素且设定值最初部分一致的元素(p标签id最初部分=p)
+</button>
+<br/>
+<button
+        onclick="getEtest()">获取拥有指定属性元素且设定值设定值最后部分一致的元素(id最后部分=test)
+</button>
+<br/>
+<button
+        onclick="gettess()">获取拥有指定属性元素且设定值中包含指定字符串的元素
+</button>
+<br/>
+
+<!--第3块练习-->
+<div class="hcode">
+    <ul>
+        <li style="color: red;">第一回 甄士隐梦幻识通灵　贾雨村风尘怀闺秀</li>
+        <li><h4><span>第二回  贾夫人仙逝扬州城　冷子兴演说荣国府</span></h4></li>
+        <li>第三回 贾雨村夤缘复旧职　林黛玉抛父进京都</li>
+        <li><span>第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</span></li>
+        <li>第五回 游幻境指迷十二钗　饮仙醪曲演红楼梦</li>
+        <li></li>
+    </ul>
+
+    <p></p>
+    <button onclick="getFirst()">获取第1个元素</button>
+    <br>
+    <button onclick="getLast()">获取最后一个元素</button>
+    <br>
+    <button onclick="getNotFirst()">获取除了指定元素外的元素</button>
+    <br>
+    <button onclick="getEven()">获取偶数序号的元素</button>
+    <br>
+    <button onclick="getOdd()">获取奇数序号的元素</button>
+    <br>
+    <button onclick="getEq()">获取指定序号的元素</button>
+    <br>
+    <button onclick="getGt()">获取指定序号后的元素</button>
+    <br>
+    <button onclick="getLt()">获取指定序号前的元素</button>
+    <br>
+    <button onclick="get_header()">获取标题元素</button>
+    <br>
+    <button onclick="getContains()">获取包含指定字符串的元素</button>
+    <br>
+    <button onclick="getEmpty()">获取空元素</button>
+    <br>
+    <button onclick="getHas()">获取拥有子孙元素的元素</button>
+    <br>
+    <button onclick="getParent()">获取非空元素</button>
+    <br>
+    <button onclick="getAnimate()">获取动画元素</button>
+    <br>
+</div>
+<!--获取表单元素练习-->
+
+<form id="form8">
+    <ul>
+        <li><label>文本输入框</label><input type="text" value=" "></li>
+        <li><label>密码输入框</label><input type="password"></li>
+        <li><input type="radio" name="radio1" value=" "><label>单选按钮1</label></li>
+        <li><input type="radio" name="radio2" value=" "><label>单选按钮2</label></li>
+        <li><input type="checkbox" name="checkbox1" value=" "><label>多选按钮1</label></li>
+        <li><input type="checkbox" name="checkbox1" value=" "><label>多选按钮2</label></li>
+        <li><input type="submit" value="提交"></li>
+        <li><input type="image" src="images/whatww.jpg"></li>
+        <li><input type="reset" value="重置"></li>
+        <li><input type="button" value="测试按钮"></li>
+        <li><input type="file"></li>
+        <li><input type="hidden" value="test"></li>
+        <li>
+            <select>
+                <option>选项1</option>
+                <option>选项2</option>
+                <option>选项3</option>
+            </select>
+        </li>
+    </ul>
+</form>
+<div id="msg"></div>
+<button onclick="getFormInfo()">按钮</button>
+
+
+<!--练习通过过滤器获取表单元素-->
+<form id="form9">
+    <ul>
+        <li><label>订单号码</label><input type="text" name="" disabled="disabled"></li>
+        <li><label>订单所有者</label><input type="text"></li>
+        <li><input type="checkbox" name="category" value="红"><label>红</label></li>
+        <li><input type="checkbox" name="category" value="黄"><label>黄</label></li>
+
+        <li><input type="checkbox" name="category" value="蓝"><label>蓝</label></li>
+        <li><input type="checkbox" name="category" value="紫"><label>紫</label></li>
+        <li><input type="checkbox" name="category" value="白"><label>白</label></li>
+
+        <li>
+            <select multiple="multiple">
+                <option>选项1</option>
+                <option>选项2</option>
+                <option>选项3</option>
+                <option>选项4</option>
+            </select>
+        </li>
+    </ul>
+</form>
+<p id="category">选择的数据：</p>
+<p id="option">选择的选择项是：</p>
+
+<!--点击修改上面输入行的颜色-->
+<ul class="ul1">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+<label>输入一个数字(0-7):</label>
+<input type="text" class="inone">
+<button type="button" id="buttons">点击时修改输入行的颜色</button>
+
+<!--获取指定条件一致的元素-->
+<div id="div-11">
+    <p>1</p>
+    <p class="center">2</p>
+    <p>3</p>
+    <p class="center">4</p>
+    <p class="center">5</p>
+    <p class="center">6</p>
+    <p>7</p>
+    <p>8</p>
+</div>
+
+<!--练习11-->
+<div id="content_2">
+    <p id="place">这里是原生的p内容</p>
+</div>
+<button type="button" onclick="do_appendTo()">练习的按钮</button>
+
+<!--练习12-->
+<div id="content_3">
+    <span id="place_1">这里是span内容</span>
+</div>
+<button type="button" onclick="do_prepend()">按钮</button>
+
+
+<!--练习13-->
+<div id="content_4">
+    <span id="place_2"> 在这个标签之前追加p标签</span>
+</div>
+<button type="button" onclick="do_prependTo()">按钮</button>
+
+
+<!--练习14-->
+<p id="place_5">第二回</p>
+<button onclick="do_after()">after练习</button>
+
+<p>第三回</p>
+<button onclick="do_before()">before练习</button>
+
+
+<!--练习16-->
+<span id="span_7_1">2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</span>
+<span id="span_7_2" style="color:red">3号：第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</span>
+<button onclick="do_wrap()">练习22</button>
+<button onclick="do_wrapAll()">练习33</button>
+<button onclick="do_wrapInner()">练习44</button>
+
+<!--练习17-->
+
+<p id="replaceWith">2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</p>
+<p id="replaceAll" style="color:red">3号：第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</p>
+
+<button onclick="do_replaceWith()">练习3213212321</button>
+<button onclick="do_replaceAll()">练习2333221</button>
+
+<!--练习18复制元素-->
+<p id="content_12">0号：第一回  甄士隐梦幻识通灵　贾雨村风尘怀闺秀</p>
+<div class="content_12">
+    <p>1号：第二回  贾夫人仙逝扬州城　冷子兴演说荣国府</p>
+    <p>2号：第三回   贾雨村夤缘复旧职　林黛玉抛父进京都</p>
+    <p>3号：第四回  薄命女偏逢薄命郎　葫芦僧乱判葫芦案</p>
+</div>
+<button onclick="do_clone()">复制元素</button>
+<button id="clonet">复制元素</button>
+
+
+
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    //练习11
+    function do_appendTo(){
+        $("<span>2321312321</span>").appendTo("#content_2")
+    };
+
+//练习12
+    function do_prepend(){
+        $("#content_3").prepend("<span>我的天哪</span>")
+    };
+//练习13
+    function do_prependTo(){
+        $("<span>我的天哪</span>").prependTo("#content_4")
+    };
+//练习14
+
+    function do_after(){
+        $("p#place_5").after("<span>我的天哪,这儿看。</span>")
+    };
+
+    function do_before(){
+        $("p#place_5").before("<span>感觉挺有意思的。</span>")
+    };
+
+//练习16
+    function do_wrap(){
+        $("span#span_7_1,span#span_7_2").wrap("<div class='wrap'><p></p></div>");
+    }
+    function do_wrapAll(){
+        $("span#span_7_1,span#span_7_2").wrapAll("<div class='wrap'><p></p></div>");
+    }
+    function do_wrapInner(){
+        $("span#span_7_1").wrapInner("<em style='color:blue'></em>");
+    }
+//练习17
+    function do_replaceWith(){
+        $("#replaceWith").replaceWith("用replaceWith替换的文本。");
+    }
+
+    function do_replaceAll(){
+        $("<span>用replaceAll替换的文本</span>").replaceAll("#replaceAll");
+    }
+//练习18复制元素
+    function do_clone(){
+        $("#content_12").clone().prependTo(".content_12");
+    }
+
+    $(function(){
+        $("button#clonet").click(function(){
+            $(this).clone(true).prependTo(".content_12");
+            // $(".content_12").clone(true).prependTo(this);
+        });
+
+
+
+    //第一块练习
+    function ancestors() {
+        $("form input").css("backgroundColor", "red")
+    }
+    ;
+    function fatherSon() {
+        $("form>label").css("border", "solid 1px red")
+    }
+    ;
+    function beforeAfter() {
+        $("label+input").css("border", "solid 1px yellow")
+    }
+    ;
+    function brother() {
+        $("form~label").css("border", "solid 1px blue")
+    }
+    ;
+
+    //第二块练习
+
+    function getId() {
+        $("p[id!=p_test2]").css("color", "red")
+    }
+    function getDiv_test() {
+        $("div[id=div_test]").css("color", "red")
+    }
+    function getDiv_test2() {
+        $("p[id]").css("color", "red")
+    }
+    function getNoP() {
+        $("p[id^=p]").css("color", "red")
+    }
+    function getEtest() {
+        $("div[id$=test]").css("color", "yellow")
+    }
+    function gettess() {
+        $("p[class*='class']").css("color", "red")
+    }
+    ;
+
+    //    第3块练习
+    function getFirst() {
+        $("ul li:first").css("color", "red")
+    }
+    ;
+    function getLast() {
+        $("ul li:last").css("color", "blue")
+    }
+    ;
+    function getNotFirst() {
+        $("ul li:not(first)").css("color", "red")
+    }
+    ;
+    function getEven() {
+        $("ul li:even").css("color", "yellow")
+    }
+    ;
+    function getOdd() {
+        $("ul li:odd ").css("color", "red")
+    }
+    ;
+    function getEq() {
+        $("ul li:eq(2)").css("color", "green")
+    }
+    ;
+    function getGt() {
+        $("ul li:gt").css("color", "red")
+    }
+    ;
+    function getLt() {
+        $("ul li:header").css("color", "red")
+    }
+    ;
+    function get_header() {
+        $("ul li:animated ").css("color", "yellow")
+    }
+    ;
+    function getContains() {
+        $("ul li:contains('冷子兴')").css("color", "red")
+    }
+    ;
+    function getEmpty() {
+        $("ul li:empty").css("color", "blue")
+    }
+    ;
+    function getHas() {
+        $("ul li:has").css("color", "red")
+    }
+    ;
+    function getParent() {
+        $("ul li:has").css("color", "yellow")
+    }
+    ;
+    function getAnimate() {
+        var eli = $("li:eq(2)");
+        eli.animate({left: '100px'}, "slow");
+        eli.animate({fontSize: '3em'}, "slow");
+    }
+    ;
+    //获取表单元素练习
+    function getFormInfo() {
+        $("#msg").html(
+                "input元素有" + $("#form8 :input").length + "个（取得所有表单元素） <br>" +
+                "text元素有" + $("#form8 :text").length + "个（取得text属性的元素） <br>" +
+                "password元素有" + $("#form8 :password").length + "个（取得password元素） <br>" +
+                "radio元素有" + $("#form8 :radio").length + "个（取得radio元素） <br>" +
+                "checkbox元素有" + $("#form8 :checkbox").length + "个（取得checkbox元素） <br>" +
+                "submit 元素有" + $("#form8 :submit ").length + "个（取得submit 元素） <br>" +
+                "image 元素有" + $("#form8 :image ").length + "个（取得image 元素） <br>" +
+                "reset元素有" + $("#form8 :reset").length + "个（取得reset元素） <br>" +
+                "button元素有" + $("#form8 :button").length + "个（取得button元素） <br>" +
+                "file 元素有" + $("#form8 :file ").length + "个（取得file 元素） <br>" +
+                "hidden元素有" + $("#form8 :hidden").length + "个（取得hidden元素） <br>"
+        );
+    }
+    ;
+
+    // 通过过滤器获取表单元素,点击时显示出,点击的内容
+
+    $(function () {
+        $("#form9 input:text:disabled").val("不能输入");
+        $("#form9 input:text:enabled").val("能输入");
+
+
+        (function checkboxclick() {
+            $("#form9 :checkbox").unbind("click", checkboxclick);
+            var _val = '';
+            $("#form9 :checkbox:checked").each(function () {
+                _val += $(this).val() + ",";
+            });
+            $("#category").html("选择的数据：" + _val);
+            $("#form9 :checkbox").click(checkboxclick);
+        })();
+        $("#form9 select").change(function () {
+            var txt = '';
+            $("#form9 select option:selected").each(function () {
+                txt += $(this).text() + ",";
+            });
+            $("#option").html("选择的项目是：" + txt);
+        }).trigger("change");
+    });
+
+    //
+    <!--点击修改上面输入行里面参数的颜色-->
+    $("#buttons").click(function () {
+        var eqn = $(".inone").val();
+        $('ul.ul1>li').eq(eqn - 1).css("color", "yellow")
+    });
+
+    //获取指定条件一致的元素
+    $(function () {
+        //第一种方法
+        //$("#div-11 p").filter(".center").css("color","red")
+
+         // 获取指定条件一致的元素有区别
+        //第二种方法
+        $("#div-11 p").css("color", "red").filter(".center").css("backgroundColor", "green");
+    });
+
+//    //
+//    $("#div-11 p").slice("3,6").css("color","red")
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+Company: <span id="company1"></span><br />
+Address: <span id="jstreet1"></span><br />
+Employees 1: <span id="employees1"></span><br />
+
+<script>
+    var obj_1 = eval ("(" + window.name + ")");
+    document.getElementById("company1").innerHTML=obj_1.company;
+    document.getElementById("jstreet1").innerHTML=obj_1.address;
+    document.getElementById("employees1").innerHTML=obj_1.employees[0].firstName + " " + obj_1.employees[0].lastName ;
+</script>
+
+</body>
+</html>
